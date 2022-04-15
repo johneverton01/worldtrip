@@ -1,12 +1,44 @@
-import { Box, Flex, Grid, GridItem, SimpleGrid, Text } from "@chakra-ui/react";
+import { Box, Container, Flex, Grid, GridItem, SimpleGrid, Text } from "@chakra-ui/react";
 import Head from "next/head";
-import { Header } from "../../components";
-import { Hero } from "../../components/Hero";
+import { Header, Hero, CountryCard } from "../../components";
+
+const cities = [
+  {
+    img: '/londres.png',
+    city: 'Londres',
+    country: 'Reino Unido',
+    flag: '/Ellipse 6-4.png',
+  },
+  {
+    img: '/paris.png',
+    city: 'Paris',
+    country: 'França',
+    flag: '/Ellipse 6-3.png',
+  },
+  {
+    img: '/roma.png',
+    city: 'Roma',
+    country: 'Itália',
+    flag: '/Ellipse 6-2.png',
+  },
+  {
+    img: '/praga.png',
+    city: 'Praga',
+    country: 'República Tcheca',
+    flag: '/Ellipse 6-1.png',
+  },
+  {
+    img: '/amsterdã.png',
+    city: 'Amsterdã',
+    country: 'Holanda',
+    flag: '/Ellipse 6.png',
+  },
+]
 
 export default function Continente() {
-	return (
-		<>
-		<Head>
+  return (
+    <>
+      <Head>
         <title>Worldtrip - Europa</title>
         <meta name="description" content="Chegou a hora de tirar do papel a viagem que você sempre sonhou." />
       </Head>
@@ -15,7 +47,7 @@ export default function Continente() {
         h="100vh"
       >
         <Header />
-				<Hero />
+        <Hero />
         <Flex
           as="section"
           mt="80px"
@@ -25,7 +57,7 @@ export default function Continente() {
           maxWidth="1440px"
           width="100%"
         >
-          <SimpleGrid  columns={{ md: 1, lg: 2 }} spacing="70px">
+          <SimpleGrid columns={{ md: 1, lg: 2 }} spacing="70px">
             <Box>
               <Text
                 as="p"
@@ -110,12 +142,34 @@ export default function Continente() {
           maxWidth="1440px"
           width="100%"
         >
-          <Text
-            fontSize="2.25rem"
-            as="h2"
-          >Cidades +100</Text>
+          <Container
+            maxW='100%'
+          >
+            <Text
+              fontSize="2.25rem"
+              as="h2"
+              mb="40px"
+            >
+              Cidades +100
+            </Text>
+            <Grid
+              templateColumns={['repeat(1, 1fr)', null, 'repeat(2, 1fr)', 'repeat(3, 1fr)','repeat(4, 1fr)']}
+              gap={6}
+              h="100%"
+            >
+              {cities.map(city => (
+                <CountryCard
+                  key={city.city}
+                  img={city.img}
+                  city={city.city}
+                  country={city.country}
+                  flag={city.flag}
+                />
+              ))}
+            </Grid>
+          </Container>
         </Flex>
-			</Flex>
-		</>
-	)
+      </Flex>
+    </>
+  )
 }

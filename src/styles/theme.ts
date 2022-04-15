@@ -7,6 +7,9 @@ export const theme = extendTheme({
 			"300": "#999999",
 			"200": "#DADADA",
 			"50": "#F5F8FA"
+		},
+		yellow: {
+			"100": "#FFBA08",
 		}
 	},
 	fonts: {
