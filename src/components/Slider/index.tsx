@@ -40,13 +40,13 @@ export function Slider({ sliders }: SliderProps) {
 								>
 									<Text
 										as="h1"
-										fontSize="48px"
+										fontSize={["1.5rem", "3rem"]}
 									>
 										{slider.title}
 									</Text>
 									<Text
 										as="p"
-										fontSize="24px"
+										fontSize={["0.875rem", "1.5rem"]}
 									>
 										{slider.description}
 									</Text>
