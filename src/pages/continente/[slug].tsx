@@ -50,32 +50,32 @@ export default function Continente() {
         <Hero />
         <Flex
           as="section"
-          mt="80px"
+          mt={["24px", "80px"]}
           mx="auto"
           alignItems="center"
           justifyContent="space-around"
           maxWidth="1440px"
           width="100%"
         >
-          <SimpleGrid columns={{ md: 1, lg: 2 }} spacing="70px">
-            <Box>
+          <SimpleGrid columns={{ md: 1, lg: 2 }} spacing={["1rem","70px"]}>
+            <Box px="1rem">
               <Text
                 as="p"
                 textAlign="justify"
-                fontSize="1.5rem"
+                fontSize={["0.875rem","1.5rem"]}
               >
                 A Europa é, por convenção, um dos seis continentes do mundo. Compreendendo a
                 península ocidental da Eurásia, a Europa geralmente divide-se da Ásia a leste pela
                 divisória de águas dos montes Urais, o rio Ural, o mar Cáspio, o Cáucaso, e o mar Negro a sudeste
               </Text>
             </Box>
-            <Box>
+            <Box px="1rem">
               <Grid templateColumns='repeat(3, 1fr)' gap="42px">
                 <GridItem justifyContent="center">
-                  <Box textAlign="center">
+                  <Box textAlign={["left", "center"]}>
                     <Text
                       as="h3"
-                      fontSize="3rem"
+                      fontSize={["1.5rem","3rem"]}
                       fontWeight="semibold"
                       color="#FFBA08"
                     >
@@ -83,8 +83,7 @@ export default function Continente() {
                     </Text>
                     <Text
                       as="p"
-                      fontSize="1.5rem"
-                      fontWeight="semibold"
+                      fontSize={["1rem", "1.5rem"]}
                       color="gray.900"
                     >
                       países
@@ -92,19 +91,19 @@ export default function Continente() {
                   </Box>
                 </GridItem>
                 <GridItem>
-                  <Box textAlign="center">
+                  <Box textAlign={["left", "center"]}>
                     <Text
                       as="h3"
-                      fontSize="3rem"
+                      fontSize={["1.5rem","3rem"]}
                       fontWeight="semibold"
                       color="#FFBA08"
+
                     >
                       60
                     </Text>
                     <Text
                       as="p"
-                      fontSize="1.5rem"
-                      fontWeight="semibold"
+                      fontSize={["1rem", "1.5rem"]}
                       color="gray.900"
                     >
                       línguas
@@ -112,10 +111,10 @@ export default function Continente() {
                   </Box>
                 </GridItem>
                 <GridItem>
-                  <Box textAlign="center">
+                  <Box textAlign={["left", "center"]}>
                     <Text
                       as="h3"
-                      fontSize="3rem"
+                      fontSize={["1.5rem","3rem"]}
                       fontWeight="semibold"
                       color="#FFBA08"
                     >
@@ -123,11 +122,10 @@ export default function Continente() {
                     </Text>
                     <Text
                       as="p"
-                      fontSize="1.5rem"
-                      fontWeight="semibold"
+                      fontSize={["1rem", "1.5rem"]}
                       color="gray.900"
                     >
-                      cidades + 100
+                      cidades +100
                     </Text>
                   </Box>
                 </GridItem>
@@ -138,7 +136,7 @@ export default function Continente() {
         <Flex
           as="section"
           mx="auto"
-          mt="80px"
+          mt={["2rem", "80px"]}
           maxWidth="1440px"
           width="100%"
         >

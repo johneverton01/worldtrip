@@ -5,16 +5,18 @@ export function CountryCard({ img, city, country, flag }: CountryCardProps) {
 	return (
 		<GridItem>
 			<Box
-				width="256px"
 				maxW='sm'
 				borderWidth='1px'
 				borderRadius='lg'
 				borderColor="yellow.100"
 				overflow='hidden'
 				bg='white'
+				mx="auto"
+				my={0}
 			>
 				<Image
 					objectFit='cover'
+					width="100%"
 					src={img}
 					alt={city}
 				/>
