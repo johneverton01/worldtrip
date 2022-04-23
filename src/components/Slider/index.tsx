@@ -25,14 +25,14 @@ export function Slider({ sliders }: SliderProps) {
 				className={styles.swiper}
 			>
 				{sliders.map(slider => (
-					<SwiperSlide key={slider.key}  className={styles.swiperSlide}>
+					<SwiperSlide key={slider.id}  className={styles.swiperSlide}>
 						<CharkraLink
 							display="center"
 							justifyContent="center"
 							alignItems="center"
 							href={slider.url}
 						>
-								<Image src={slider.img} height="450px" width="1240px" />
+								<Image src={slider.image} height="450px" width="1240px" />
 								<Box
 									position="absolute"
 									color="white"
@@ -42,7 +42,7 @@ export function Slider({ sliders }: SliderProps) {
 										as="h1"
 										fontSize={["1.5rem", "3rem"]}
 									>
-										{slider.title}
+										{slider.name}
 									</Text>
 									<Text
 										as="p"

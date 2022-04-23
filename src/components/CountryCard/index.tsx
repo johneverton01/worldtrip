@@ -17,6 +17,7 @@ export function CountryCard({ img, city, country, flag }: CountryCardProps) {
 				<Image
 					objectFit='cover'
 					width="100%"
+					maxH="173px"
 					src={img}
 					alt={city}
 				/>
@@ -52,6 +53,8 @@ export function CountryCard({ img, city, country, flag }: CountryCardProps) {
 								borderRadius='full'
 								src={flag}
 								alt={country}
+								w={30}
+								h={30}
 								mx="auto"
 							/>
 						</GridItem>

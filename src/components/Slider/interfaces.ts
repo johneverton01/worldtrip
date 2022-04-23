@@ -3,9 +3,9 @@ export interface SliderProps {
 }
 
 type SliderItem = {
-	key: string;
-	img: string;
+	id: string;
+	image: string;
 	url: string;
-	title : string;
+	name : string;
 	description : string;
 }

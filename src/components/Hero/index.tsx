@@ -1,12 +1,16 @@
 import { Box, Flex, Image, Text } from "@chakra-ui/react";
 
-export function Hero() {
+interface HeroProp {
+	title: string;
+	poster: string;
+	city: string;
+}
+export function Hero({ title, poster, city }: HeroProp) {
 	return (
 		<Flex
 			w="100%"
 			position="relative"
 		>
-
 				<Box
 					position="absolute"
 					maxWidth="1440px"
@@ -29,16 +33,18 @@ export function Hero() {
 							as="h1"
 							fontSize={["1.75rem", "3rem"]}
 							textAlign={["center", null]}
-
+							textTransform="capitalize"
 						>
-							Europa
+							{title}
 						</Text>
 					</Flex>
 				</Box>
 			<Image
 				w='100%'
+				maxHeight={500}
 				h="auto"
-				src="/EXdXLrZXS9Q.png"
+				src={poster}
+				alt={city}
 				objectFit="cover"
 			/>
 		</Flex>

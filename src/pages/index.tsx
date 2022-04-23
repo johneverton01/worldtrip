@@ -2,48 +2,28 @@ import {
   Box, Flex, HStack, Image, Text, Divider, SimpleGrid, Stack
 } from '@chakra-ui/react'
 import Head from 'next/head'
+import { useEffect, useState } from 'react';
 import { Header, Slider, TravelItem } from '../components'
+import { api } from '../services/api';
 
-const sliders = [
-  {
-    key: "1",
-    img: "/continent-image.png",
-    title: "Europa",
-    url: "continente/europa",
-    description: "O continente mais antigo."
-  },
-  {
-    key: "2",
-    img: "/continent-image.png",
-    title: "Europa",
-    url: "continente/europa",
-    description: "O continente mais antigo."
-  },
-  {
-    key: "3",
-    img: "/continent-image.png",
-    title: "Europa",
-    url: "continente/europa",
-    description: "O continente mais antigo."
-  },
-  {
-    key: "4",
-    img: "/continent-image.png",
-    title: "Europa",
-    url: "continente/europa",
-    description: "O continente mais antigo."
-  },
-  {
-    key: "5",
-    img: "/continent-image.png",
-    title: "Europa",
-    url: "continente/europa",
-    description: "O continente mais antigo."
-  },
-]
-
+interface Continent {
+  id: string;
+	image: string;
+	url: string;
+	name : string;
+	description : string;
+}
 
 export default function Home() {
+  const [continent, setContinent] = useState<Continent[]>([]);
+
+  useEffect(() => {
+    api.get('continents')
+      .then(
+        response => setContinent(response.data.continents)
+      );
+  }, [])
+
   return (
     <>
       <Head>
@@ -205,14 +185,10 @@ export default function Home() {
           mx="auto"
         >
           <Slider
-            sliders={sliders}
+            sliders={continent}
           />
         </Flex>
-
-
       </Flex>
     </>
   )
 }
-
-

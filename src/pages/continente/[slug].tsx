@@ -1,6 +1,9 @@
 import { Box, Container, Flex, Grid, GridItem, SimpleGrid, Text } from "@chakra-ui/react";
 import Head from "next/head";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import { Header, Hero, CountryCard } from "../../components";
+import { api } from '../../services/api';
 
 const cities = [
   {
@@ -35,7 +38,41 @@ const cities = [
   },
 ]
 
-export default function Continente() {
+interface City {
+	country: string,
+	city: string,
+	img: string,
+	flag: string,
+}
+
+interface CityParams {
+	id: string,
+	poster: string,
+	country: number,
+	languages: number,
+  abstract:string,
+	featuredCities: string,
+	featuredNumberCities: string,
+	citiesTotal: number,
+	idContinent: string | number,
+	city: City[],
+}
+
+export default function Continents() {
+  const [cities, setCities] = useState<CityParams>({} as CityParams);
+  const router = useRouter();
+  const { slug } = router.query
+
+  useEffect(() => {
+    getCities(slug)
+  }, [slug]);
+
+  const getCities = async (slug : string | string[] | undefined) => {
+    if (slug) {
+      const dataCities = (await api.get(`/cities/${slug}`)).data.city;
+      setCities(dataCities);
+    }
+  }
   return (
     <>
       <Head>
@@ -47,7 +84,7 @@ export default function Continente() {
         h="100vh"
       >
         <Header />
-        <Hero />
+        <Hero title={cities.id} poster={cities.poster} city={cities.featuredCities}/>
         <Flex
           as="section"
           mt={["24px", "80px"]}
@@ -64,9 +101,7 @@ export default function Continente() {
                 textAlign="justify"
                 fontSize={["0.875rem","1.5rem"]}
               >
-                A Europa é, por convenção, um dos seis continentes do mundo. Compreendendo a
-                península ocidental da Eurásia, a Europa geralmente divide-se da Ásia a leste pela
-                divisória de águas dos montes Urais, o rio Ural, o mar Cáspio, o Cáucaso, e o mar Negro a sudeste
+                {cities.abstract}
               </Text>
             </Box>
             <Box px="1rem">
@@ -79,7 +114,7 @@ export default function Continente() {
                       fontWeight="semibold"
                       color="#FFBA08"
                     >
-                      50
+                      {cities.country}
                     </Text>
                     <Text
                       as="p"
@@ -99,7 +134,7 @@ export default function Continente() {
                       color="#FFBA08"
 
                     >
-                      60
+                      {cities.languages}
                     </Text>
                     <Text
                       as="p"
@@ -118,7 +153,7 @@ export default function Continente() {
                       fontWeight="semibold"
                       color="#FFBA08"
                     >
-                      27
+                      {cities.featuredNumberCities}
                     </Text>
                     <Text
                       as="p"
@@ -148,14 +183,14 @@ export default function Continente() {
               as="h2"
               mb="40px"
             >
-              Cidades +100
+              Cidades +{cities.citiesTotal}
             </Text>
             <Grid
               templateColumns={['repeat(1, 1fr)', null, 'repeat(2, 1fr)', 'repeat(3, 1fr)','repeat(4, 1fr)']}
               gap={6}
               h="100%"
             >
-              {cities.map(city => (
+              {cities!.city && cities.city.map(city => (
                 <CountryCard
                   key={city.city}
                   img={city.img}
